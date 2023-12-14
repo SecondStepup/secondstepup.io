@@ -10,7 +10,7 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            background-image: url('sportaudi.png'); /* Replace with the path to your background image */
+            background-image: url('sportaudi.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -20,7 +20,7 @@
             align-items: center;
         }
         h1 {
-            color: #FFFFFF; /* Set your desired title color */
+            color: #ffffff; /* Set your desired title color */
         }
         #qrcode {
             max-width: 300px;
@@ -39,7 +39,7 @@
 
     <div id="qrcode"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@nuintun/qrcode"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script>
         function generateQRCode() {
             const urlInput = document.getElementById('urlInput').value;
@@ -50,22 +50,11 @@
                 qrcodeContainer.innerHTML = '';
                 
                 // Generate new QR code
-                const qrcode = new QRCodeStyling({
+                const qrcode = new QRCode(qrcodeContainer, {
+                    text: urlInput,
                     width: 128,
                     height: 128,
-                    data: urlInput,
-                    image: "path/to/logo.png", // Optional logo image
-                    imageOptions: {
-                        crossOrigin: "anonymous",
-                        margin: 20,
-                    },
-                    dotsOptions: {
-                        color: "#000",
-                        type: "rounded",
-                    },
                 });
-
-                qrcode.append(qrcodeContainer);
             } else {
                 alert('Please enter a valid URL.');
             }
